@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaitWise | Smart Queue Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">W</span><span>WaitWise<small>SMART QUEUE MANAGEMENT</small></span></a>
+    <nav><a href="#queue">Live queue</a><a href="#insights">Insights</a><a href="#admin">Staff panel</a></nav>
+    <span class="live-pill"><i></i> System online</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">LESS WAITING. MORE LIVING.</p>
+        <h1>Your time matters.<br><em>Know before you go.</em></h1>
+        <p class="hero-copy">Join the queue digitally, track your token, and get a clear estimate of when you’ll be served.</p>
+        <a class="primary-btn" href="#get-token">Get a queue token <span>→</span></a>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-top"><span>LIVE SERVICE STATUS</span><span class="status-dot">● OPEN</span></div>
+        <div class="big-number" id="heroWaiting">0</div>
+        <p>people currently waiting</p>
+        <div class="mini-stats"><div><strong id="heroServing">—</strong><span>Now serving</span></div><div><strong id="heroWait">0 min</strong><span>Estimated wait</span></div></div>
+        <div class="progress"><span id="queueProgress"></span></div>
+        <small class="muted">Queue updates automatically on this device.</small>
+      </div>
+    </section>
+
+    <section class="stats-grid" id="queue">
+      <article class="stat-card"><span class="stat-icon">◷</span><div><small>Average service time</small><strong id="avgDisplay">5 min</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">♙</span><div><small>People waiting</small><strong id="waitingDisplay">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">▣</span><div><small>Tokens served today</small><strong id="servedDisplay">0</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">◉</span><div><small>Next token</small><strong id="nextDisplay">—</strong></div></article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel token-panel" id="get-token">
+        <div class="section-heading"><div><p class="eyebrow">QUICK & SIMPLE</p><h2>Join the queue</h2></div><span class="step-badge">01 / TOKEN</span></div>
+        <form id="tokenForm">
+          <label for="visitorName">Your name</label>
+          <input id="visitorName" maxlength="35" placeholder="Enter your name" required />
+          <label for="serviceType">Choose a service</label>
+          <select id="serviceType"><option>General enquiry</option><option>Fee payment</option><option>Certificates</option><option>Admissions</option><option>Other</option></select>
+          <button class="primary-btn full" type="submit">Generate my token <span>→</span></button>
+        </form>
+        <div id="tokenResult" class="token-result hidden" aria-live="polite"></div>
+        <p class="fine-print">This demo stores queue data in your browser only. It is not connected to a real office.</p>
+      </article>
+
+      <article class="panel live-panel">
+        <div class="section-heading"><div><p class="eyebrow">RIGHT NOW</p><h2>Live queue</h2></div><span class="live-pill"><i></i> LIVE</span></div>
+        <div class="now-serving"><div><small>NOW SERVING</small><strong id="servingToken">—</strong></div><div class="serving-side"><small>UP NEXT</small><strong id="upNext">—</strong></div></div>
+        <div class="queue-title"><strong>Waiting list</strong><span id="queueCount">0 people</span></div>
+        <div id="queueList" class="queue-list"><div class="empty-state">No one is waiting. Be the first to join!</div></div>
+      </article>
+    </section>
+
+    <section class="panel insights-panel" id="insights">
+      <div class="section-heading"><div><p class="eyebrow">PLAN YOUR VISIT</p><h2>Queue insights</h2></div><span class="step-badge">LIVE ESTIMATES</span></div>
+      <div class="insights-grid">
+        <div class="wait-estimate"><small>YOUR ESTIMATED WAIT</small><strong id="estimateLarge">0 <span>min</span></strong><p>Based on the number of people ahead and average service duration.</p></div>
+        <div class="busy-times"><strong>Typical busy periods</strong><p class="muted">Illustrative guidance for this demo. Replace with real historical data when deployed.</p>
+          <div class="time-row"><span>10:00 AM – 12:00 PM</span><span class="load high">Usually busy</span></div>
+          <div class="time-row"><span>12:00 PM – 2:00 PM</span><span class="load low">Usually quieter</span></div>
+          <div class="time-row"><span>2:00 PM – 4:00 PM</span><span class="load medium">Moderate</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel admin-panel" id="admin">
+      <div class="section-heading"><div><p class="eyebrow">FOR OFFICE STAFF</p><h2>Staff control panel</h2></div><span class="step-badge">ADMIN DEMO</span></div>
+      <div class="admin-controls">
+        <div class="setting"><label for="avgMinutes">Average service duration</label><div class="inline-input"><input id="avgMinutes" type="number" min="1" max="60" value="5"/><span>minutes</span></div><button id="saveSettings" class="secondary-btn">Save setting</button></div>
+        <div class="admin-actions"><div><small>Current token</small><strong id="adminCurrent">—</strong></div><button id="serveNext" class="primary-btn">Serve next token →</button><button id="resetQueue" class="danger-btn">Reset queue</button></div>
+      </div>
+      <p class="fine-print">For classroom demonstration only: the staff panel has no login or access control. A real deployment needs authentication, a server, and a database.</p>
+      <div id="adminMessage" class="admin-message" aria-live="polite"></div>
+    </section>
+
+    <footer><span class="brand small-brand"><span class="brand-mark">W</span> WaitWise</span><span>SDLC Website Project · Queue management made simpler</span></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
